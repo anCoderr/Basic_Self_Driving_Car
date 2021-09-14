@@ -1,6 +1,5 @@
-# # AI for Self Driving Car
-#
-# # Importing the libraries
+# AI for Self Driving Car
+
 
 import numpy as np
 import random
@@ -13,7 +12,7 @@ import torch.autograd as autograd
 from torch.autograd import Variable
 
 
-# Creating the architecture of the Neural Network
+# Creating the basic architecture of the ANN
 
 class Network(nn.Module):
 
@@ -30,7 +29,7 @@ class Network(nn.Module):
         return q_values
 
 
-# Implementing Experience Replay
+# Implementing Experience Replay for better performance
 
 class ReplayMemory(object):
 
@@ -48,7 +47,7 @@ class ReplayMemory(object):
         return map(lambda x: Variable(torch.cat(x, 0)), samples)
 
 
-# Implementing Deep Q Learning
+# Implementing Deep Q Learning | "The fun stuff begins" ~ anCoderr
 
 class Dqn:
 
@@ -63,7 +62,8 @@ class Dqn:
         self.last_reward = 0
 
     def select_action(self, state):
-        probs = F.softmax(self.model(Variable(state, volatile=True)) * 75)  # T=100
+        probs = F.softmax(self.model(Variable(state, volatile=True)) * 75)  
+        # T=75 it defines the cars confidence in its actions. How biased are we for the exploitation of data rather than exploration.
         action = probs.multinomial(num_samples=1)
         return action.data[0, 0]
 

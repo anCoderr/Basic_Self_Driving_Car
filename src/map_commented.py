@@ -1,12 +1,10 @@
 # Self Driving Car
 
-# Importing the libraries
 import numpy as np
 from random import random, randint
 import matplotlib.pyplot as plt
 import time
 
-# Importing the Kivy packages
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.uix.button import Button
@@ -16,10 +14,8 @@ from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProper
 from kivy.vector import Vector
 from kivy.clock import Clock
 
-# Importing the Dqn object from our AI in ai.py
 from ai import Dqn
 
-# Adding this line if we don't want the right click to put a red point
 Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 
 # Introducing last_x and last_y, used to keep the last point in memory when we draw the sand on the map
@@ -52,7 +48,7 @@ def init():
 last_distance = 0
 
 
-# Creating the car class (to understand "NumericProperty" and "ReferenceListProperty", see kivy tutorials: https://kivy.org/docs/tutorials/pong.html)
+# Creating the car class
 
 class Car(Widget):
     angle = NumericProperty(
@@ -101,25 +97,25 @@ class Car(Widget):
             self.signal3 = 1.  # sensor 3 detects full sand
 
 
-class Ball1(Widget):  # sensor 1 (see kivy tutorials: kivy https://kivy.org/docs/tutorials/pong.html)
+class Ball1(Widget):  # sensor 1
     pass
 
 
-class Ball2(Widget):  # sensor 2 (see kivy tutorials: kivy https://kivy.org/docs/tutorials/pong.html)
+class Ball2(Widget):  # sensor 2
     pass
 
 
-class Ball3(Widget):  # sensor 3 (see kivy tutorials: kivy https://kivy.org/docs/tutorials/pong.html)
+class Ball3(Widget):  # sensor 3
     pass
 
 
-# Creating the game class (to understand "ObjectProperty", see kivy tutorials: kivy https://kivy.org/docs/tutorials/pong.html)
+# Creating the game class
 
 class Game(Widget):
-    car = ObjectProperty(None)  # getting the car object from our kivy file
-    ball1 = ObjectProperty(None)  # getting the sensor 1 object from our kivy file
-    ball2 = ObjectProperty(None)  # getting the sensor 2 object from our kivy file
-    ball3 = ObjectProperty(None)  # getting the sensor 3 object from our kivy file
+    car = ObjectProperty(None)  # getting the car object
+    ball1 = ObjectProperty(None)  # getting the sensor 1 object
+    ball2 = ObjectProperty(None)  # getting the sensor 2 object
+    ball3 = ObjectProperty(None)  # getting the sensor 3 object
 
     def serve_car(self):  # starting the car when we launch the application
         self.car.center = self.center  # the car will start at the center of the map
@@ -162,7 +158,7 @@ class Game(Widget):
 
         if sand[int(self.car.x), int(self.car.y)] > 0:  # if the car is on the sand
             self.car.velocity = Vector(1, 0).rotate(self.car.angle)  # it is slowed down (speed = 1)
-            last_reward = -1  # and reward = -1
+            last_reward = -5  # and reward = -1
         else:  # otherwise
             self.car.velocity = Vector(6, 0).rotate(self.car.angle)  # it goes to a normal speed (speed = 6)
             last_reward = -0.2  # and it gets bad reward (-0.2)
@@ -190,7 +186,7 @@ class Game(Widget):
         last_distance = distance
 
 
-# Painting for graphic interface (see kivy tutorials: https://kivy.org/docs/tutorials/firstwidget.html)
+# Painting for graphic interface
 
 class MyPaintWidget(Widget):
 
@@ -221,7 +217,7 @@ class MyPaintWidget(Widget):
             last_y = y
 
 
-# API and switches interface (see kivy tutorials: https://kivy.org/docs/tutorials/pong.html)
+# API and switches interface 
 
 class CarApp(App):
 
