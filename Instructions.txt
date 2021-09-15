@@ -1,6 +1,0 @@
-As of right now I am not able to solve the dependencies issue for jupyter file format.
-
-So use venv as default interpreter of this project.
-
-The file to be used for dependencies package installation is : requirement.txt
-Use pip to create environment as the file is formatted for pip only.

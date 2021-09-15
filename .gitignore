@@ -110,6 +110,7 @@ ENV/
 env.bak/
 venv.bak/
 condaenv/
+selfDrivingCarEnv/
 
 # Spyder project settings
 .spyderproject
