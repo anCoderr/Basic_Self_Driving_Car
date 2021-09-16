@@ -15,7 +15,7 @@ Apart from those we also need to manually install numpy, kivy, matplotlib, pillo
 >
 >`conda activate $dir_path\$virtual_env_name` // Activating the virtual environment
 ***
-Once the environmetn is made and activated use :
+### Installing some additional packages :
 >`pip install numpy==1.21.2 pillow==8.3.2 matplotlib==3.4.2 kivy==2.0.0`
 
 Use `conda list` to check if all packages were installed, mainly :
